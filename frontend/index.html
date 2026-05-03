@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa Académica - Acceso</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .btn-estudiante {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-estudiante:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-admin {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-admin:hover {
+            background: #fb8c00;
+            transform: translateY(-2px);
+        }
+
+        .password-section {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .password-section input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 Rifa Académica</h1>
+        <p class="subtitle">Sistema de selección y sorteo</p>
+        
+        <div class="buttons">
+            <a href="estudiante.html" class="btn btn-estudiante">👨‍🎓 Ingresar como Estudiante</a>
+            <button onclick="mostrarPassword()" class="btn btn-admin">👑 Acceso Administrador</button>
+        </div>
+        
+        <div id="passwordSection" class="password-section">
+            <input type="password" id="adminPassword" placeholder="Contraseña de administrador">
+            <button onclick="verificarAdmin()" class="btn" style="background: #2196f3; color: white;">Acceder</button>
+        </div>
+        
+        <div class="footer">
+            Los estudiantes pueden seleccionar su número favorito.<br>
+            Los administradores gestionan la rifa y el sorteo.
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_PASSWORD = 'admin123'; // Cambia esta contraseña
+        
+        function mostrarPassword() {
+            const section = document.getElementById('passwordSection');
+            section.style.display = section.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        function verificarAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                window.location.href = 'admin.html';
+            } else {
+                alert('❌ Contraseña incorrecta');
+            }
+        }
+        
+        // Permitir Enter en el campo de contraseña
+        document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                verificarAdmin();
+            }
+        });
+    </script>
+</body>
+</html>
